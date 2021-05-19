@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+      <link rel="stylesheet" href="css/main.css">
+      <title>My VueJS api app</title>
+   </head>
+   <body>
+     <div id="app" class="container" >
+      <div class="jumbotron">
+        <h1 class="welcome">{{welcomeMessage}}</h1>
+      </div>
+      <div class="p-3 mb-2 bg-dark text-dark">
+        <div v-for="value in results">
+          <ul v-for = "number in total_number">
+              
+        <div class="card border-primary mb-3 shift offset-md-4" style="max-width: 18rem;">
+          <div class="card-header">Title: {{ value[number - 1 ].title }}</div>
+          <div class="card-body text-dark">
+            <h5 class="card-title">{{ value[number - 1 ].body }}</h5>
+            <p class="card-text">ID: {{ value[number - 1 ].id }}</p>
+            <p class="card-text">Created: 
+              <br>
+              {{ value[number - 1 ].created }}</p>
+            <p class="card-text">Modified: 
+              <br>
+              {{ value[number - 1 ].modified }}</p>
+            
+          </div>
+        </div>
+
+          </ul>
+        </div>
+     </div>
+    </div>
+      <script src="js/vue.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+      <script src="js/api.js"></script>
+   </body>
+</html>
