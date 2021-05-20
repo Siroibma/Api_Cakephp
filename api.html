@@ -9,33 +9,30 @@
       <title>My VueJS api app</title>
    </head>
    <body>
-     <div id="app" class="container" >
-      <div class="jumbotron">
-        <h1 class="welcome">{{welcomeMessage}}</h1>
+      <div id="app" class="container" >
+         <div class="jumbotron">
+            <h1 class="welcome">{{welcomeMessage}}</h1>
+         </div>
+         <div class="card-body">
+            <form>
+               <strong>Title:</strong>
+               <input type="text" class="form-control">
+               <strong>Body:</strong>
+               <textarea class="form-control"></textarea>
+               <select name="categroy" id="category_id">
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                
+              </select>
+               <button class="btn btn-success">Submit</button>
+            </form>
+            <strong>Output:</strong>
+         </div>
       </div>
-      <div class="p-3 mb-2 bg-dark text-dark">
-        <div v-for="value in results">
-          <ul v-for = "number in total_number">
-              
-        <div class="card border-primary mb-3 shift offset-md-4" style="max-width: 18rem;">
-          <div class="card-header">Title: {{ value[number - 1 ].title }}</div>
-          <div class="card-body text-dark">
-            <h5 class="card-title">{{ value[number - 1 ].body }}</h5>
-            <p class="card-text">ID: {{ value[number - 1 ].id }}</p>
-            <p class="card-text">Created: 
-              <br>
-              {{ value[number - 1 ].created }}</p>
-            <p class="card-text">Modified: 
-              <br>
-              {{ value[number - 1 ].modified }}</p>
-            
-          </div>
-        </div>
-
-          </ul>
-        </div>
-     </div>
-    </div>
+      <button class="btn btn-info" id="post">POST</button>
+      <button class="btn btn-info" id="delete">delete</button>
+      <button class="btn btn-info" id="create">create</button>
       <script src="js/vue.min.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
       <script src="js/api.js"></script>
