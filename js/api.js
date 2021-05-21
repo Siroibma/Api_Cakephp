@@ -1,4 +1,4 @@
-
+token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjgwLCJleHAiOjE2MjIxMzI0ODB9.GEoBhrlckoVTjt4upuwyzNdD2G5ZJ3KK4ZxGCPeG-PM"
 
 
 let app = new Vue({
@@ -41,17 +41,40 @@ function addUser() {
       email: 'ambioris42432@gmail.com',
       password: 'test'
     })
-    .then(res => console.log(res.request.response.data[0]))
+    .then(res => console.log(res.request.response.data))
     .catch(err => console.error(err));
 }
 
 function deleteArticle() {
+
+  Article_ID = String(document.getElementById('AID').value);
+
+  Article_url = "http://206.189.202.188:2523/api/articles/delete/";
+
+  console.log(Article_ID);
+
+  delete_url = Article_url.concat(Article_ID);
+
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}` 
+    }
+  };
+
+
+  console.
+
+
   axios
-    .post('http://206.189.202.188:2523/api/users/add', {
-      email: 'ambioris42432@gmail.com',
-      password: 'test'
-    })
-    .then(res => console.log(res.request.response.data[0]))
+    .delete(
+      'http://206.189.202.188:2523/api/articles/delete/8',
+      {
+        id: '8'
+      },
+      config
+    )
+    .then(result => console.log(result))
     .catch(err => console.error(err));
 }
 
@@ -60,22 +83,25 @@ function createArticle() {
   const config = {
     headers: {
       'Content-Type': 'application/json',
-      Authorization: 'sometoken'
+      Authorization: `Bearer ${token}` 
     }
   };
 
   axios
     .post(
-      'https://jsonplaceholder.typicode.com/todos',
+      'http://206.189.202.188:2523/api/articles/add',
       {
         title: 'New Todo',
-        completed: false
+        body: 'hello',
+        category_id: '0'
       },
       config
     )
-    .then(res => showOutput(res))
+    .then(result => console.log(result))
     .catch(err => console.error(err));
 }
+
+
 
 
 
