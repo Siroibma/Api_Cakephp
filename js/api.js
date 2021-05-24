@@ -1,4 +1,4 @@
-token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjkwLCJleHAiOjE2MjI0NzYwNTZ9.8jjzHC31-CDYiZH-bd0wYsKItFt8ZjiPFMRWevwL6Is"
+token = "";
 var amount = 5;
 
 console.log(token);
@@ -47,11 +47,18 @@ function addUser(event) {
     },
     config
     )
-    .then(res => 
-      console.log(res.request.response)
+    .then(response => 
+      test_statement(response)
     )
-    .then()
-    .catch(err => console.error(err));
+    .catch(error => console.error(error));
+}
+
+
+function test_statement(response) {
+  console.log(response.request.response);
+  json_response = JSON.parse(response.request.response);
+
+  token = json_response.data.token;
 }
 
 function deleteArticle(event) {
@@ -84,7 +91,6 @@ function deleteArticle(event) {
     .then(result => console.log(result))
     .catch(err => console.error(err));
 
-    console.log(result);
 }
 
 
@@ -117,7 +123,6 @@ function createArticle(event) {
     .then(result => console.log(result))
     .catch(err => console.error(err));
 
-    console.log(result);
 }
 
 function updateArticle(event) {
