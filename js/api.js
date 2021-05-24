@@ -1,12 +1,14 @@
 token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjgwLCJleHAiOjE2MjIxMzI0ODB9.GEoBhrlckoVTjt4upuwyzNdD2G5ZJ3KK4ZxGCPeG-PM"
+var amount = 5;
 
+console.log(token);
 
 let app = new Vue({
   el: '#app',
   data: {
     welcomeMessage: 'Welcome To My Api Page',
     results: [],
-    total_number: 6,
+    total_number: amount,
     output: ''
   },
   mounted() {
@@ -14,9 +16,6 @@ let app = new Vue({
     axios ({
       method: 'get',
       url: 'http://206.189.202.188:2523/articles/index.json',
-      params : {
-        _limit: 6
-      }
       })
       .then(response => {
         this.results = response.data
@@ -36,24 +35,34 @@ let app = new Vue({
 });
 
 function addUser() {
+
+  const config = {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  };
+
   axios
     .post('http://206.189.202.188:2523/api/users/add', {
       email: 'ambioris42432@gmail.com',
       password: 'test'
-    })
+    },
+    config
+    )
     .then(res => console.log(res.request.response.data))
     .catch(err => console.error(err));
 }
 
 function deleteArticle() {
 
-  Article_ID = String(document.getElementById('AID').value);
+  /*Article_ID = String(document.getElementById('AID').value);
 
   Article_url = "http://206.189.202.188:2523/api/articles/delete/";
 
   console.log(Article_ID);
 
   delete_url = Article_url.concat(Article_ID);
+  */
 
   const config = {
     headers: {
@@ -63,7 +72,7 @@ function deleteArticle() {
   };
 
 
-  console.
+  //console.log(delete_url);
 
 
   axios
@@ -80,6 +89,8 @@ function deleteArticle() {
 
 
 function createArticle() {
+
+
   const config = {
     headers: {
       'Content-Type': 'application/json',
