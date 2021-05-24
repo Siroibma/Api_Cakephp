@@ -44,7 +44,7 @@
                   <input type="text" id="email" class="form-control"><br>
                   <label for="password">Password</label><br>
                   <input type = "password" id="password" class="form-control"><br>
-                  <button class="btn btn-info" id="delete" >delete</button>
+                  <button class="btn btn-info" id="register" >register</button>
                </form>
             </div>
 
@@ -53,9 +53,9 @@
             <form>
                <h2> To Create An Article You Enter A title and body along with choosing an category number</h2>
                <strong>Title:</strong>
-               <input type="text" class="form-control">
+               <input type="text" class="form-control" id = "title">
                <strong>Body:</strong>
-               <textarea class="form-control"></textarea>
+               <textarea class="form-control" id = "body"></textarea>
                <select name="categroy" id="category_id">
                   <option value="5">5</option>
                   <option value="6">6</option>
@@ -69,8 +69,8 @@
       <div class="container">
          <form>
             <h2>To Delete an Article you enter the articles respective ID</h2>
-            <label for="AID" >Article ID</label><br>
-            <input type="text" id="AID" class="form-control"><br>
+            <label for="article_ID" >Article ID</label><br>
+            <input type="text" id="article_ID" class="form-control"><br>
             <button class="btn btn-info" id="delete" >delete</button>
          </form>
       </div>
@@ -82,9 +82,9 @@
             <label for="AID" >Article ID</label><br>
             <input type="text" id="AID" class="form-control"><br>
             <strong>Title:</strong>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" id = "update_title">
             <strong>Body:</strong>
-            <textarea class="form-control"></textarea>
+            <textarea class="form-control" id = "update_body"></textarea>
             <button class="btn btn-info" id="update">Update</button>
          </form>
       </div>
