@@ -16,77 +16,73 @@
          <div>
             <div class="p-3 mb-2 bg-dark text-dark">
                <div v-for="value in results">
-                 <ul v-for = "number in total_number">
-                     
-               <div class="card border-primary mb-3 shift offset-md-4" style="max-width: 18rem;">
-                 <div class="card-header">Title: {{ value[number - 1 ].title }}</div>
-                 <div class="card-body text-dark">
-                   <h5 class="card-title">{{ value[number - 1 ].body }}</h5>
-                   <p class="card-text">ID: {{ value[number - 1 ].id }}</p>
-                   <p class="card-text">Created: 
-                     <br>
-                     {{ value[number - 1 ].created }}</p>
-                   <p class="card-text">Modified: 
-                     <br>
-                     {{ value[number - 1 ].modified }}</p>
-                   
-                 </div>
-               </div>
-       
-                 </ul>
+                  <ul v-for = "number in total_number">
+                     <div class="card border-primary mb-3 shift offset-md-4" style="max-width: 18rem;">
+                        <div class="card-header">Title: {{ value[number - 1 ].title }}</div>
+                        <div class="card-body text-dark">
+                           <h5 class="card-title">{{ value[number - 1 ].body }}</h5>
+                           <p class="card-text">ID: {{ value[number - 1 ].id }}</p>
+                           <p class="card-text">Created: 
+                              <br>
+                              {{ value[number - 1 ].created }}
+                           </p>
+                           <p class="card-text">Modified: 
+                              <br>
+                              {{ value[number - 1 ].modified }}
+                           </p>
+                        </div>
+                     </div>
+                  </ul>
                </div>
             </div>
-
             <div class="container">
-               <form>
+               <form @submit.prevent="addUser()" ref = "user_info" >
                   <h2>Enter Username and Password to obtain Token</h2>
                   <label for="email">Email</label><br>
-                  <input type="text" id="email" class="form-control"><br>
+                  <input type="text" id="email" class="form-control" name = "email"><br>
                   <label for="password">Password</label><br>
-                  <input type = "password" id="password" class="form-control"><br>
+                  <input type = "password" id="password" class="form-control" name = "password"><br>
                   <button class="btn btn-info" id="register" >register</button>
                </form>
             </div>
-
-
-
-            <form>
-               <h2> To Create An Article You Enter A title and body along with choosing an category number</h2>
-               <strong>Title:</strong>
-               <input type="text" class="form-control" id = "title">
-               <strong>Body:</strong>
-               <textarea class="form-control" id = "body"></textarea>
-               <select name="categroy" id="category_id">
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                  <option value="7">7</option>
-               </select>
-               <button class="btn btn-info" id="create">create</button>
-            </form>
+            <div>
+               <form @submit.prevent="createArticle()" ref = "article_info">
+                  <h2> To Create An Article You Enter A title and body along with choosing an category number</h2>
+                  <strong>Title:</strong>
+                  <input type="text" class="form-control" id = "title" name = "title">
+                  <strong>Body:</strong>
+                  <textarea class="form-control" id = "body" name = "body"></textarea>
+                  <select name="category" id="category_id">
+                     <option value="5">5</option>
+                     <option value="6">6</option>
+                     <option value="7">7</option>
+                  </select>
+                  <button class="btn btn-info" id="create">create</button>
+               </form>
+            </div>
             <strong>Output:</strong>
+            <div class="container">
+               <form ref = "delete_art"  @submit.prevent="deleteArticle()">
+                  <h2>To Delete an Article you enter the articles respective ID</h2>
+                  <label for="article_ID">Article ID</label><br>
+                  <input type="text" id="article_ID" class="form-control" name = "art_id"><br>
+                  <button class="btn btn-info" id="delete" >delete</button>
+               </form>
+            </div>
+            <div class="container">
+               <form ref = "update_art" @submit.prevent = "updateArticle()">
+                  <h2>To edit Article You first must enter the article ID</h2>
+                  <h2>Enter Title and body of what you want to change</h2>
+                  <label for="AID" >Article ID</label><br>
+                  <input type="text" id="AID" class="form-control" name = "update_AID"><br>
+                  <strong>Title:</strong>
+                  <input type="text" class="form-control" id = "update_title" name="update_title">
+                  <strong>Body:</strong>
+                  <textarea class="form-control" id = "update_body" name="update_body"></textarea>
+                  <button class="btn btn-info" id="update">Update</button>
+               </form>
+            </div>
          </div>
-      </div>
-      <div class="container">
-         <form>
-            <h2>To Delete an Article you enter the articles respective ID</h2>
-            <label for="article_ID" >Article ID</label><br>
-            <input type="text" id="article_ID" class="form-control"><br>
-            <button class="btn btn-info" id="delete" >delete</button>
-         </form>
-      </div>
-
-      <div class="container">
-         <form>
-            <h2>To edit Article You first must enter the article ID</h2>
-            <h2>Enter Title and body of what you want to change</h2>
-            <label for="AID" >Article ID</label><br>
-            <input type="text" id="AID" class="form-control"><br>
-            <strong>Title:</strong>
-            <input type="text" class="form-control" id = "update_title">
-            <strong>Body:</strong>
-            <textarea class="form-control" id = "update_body"></textarea>
-            <button class="btn btn-info" id="update">Update</button>
-         </form>
       </div>
       <script src="js/vue.min.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
