@@ -31,8 +31,8 @@ function addUser(event) {
   event.preventDefault();
 
 
-  let email = "amber123@gmail.com";
-  let password = "123";
+  let email = String(document.getElementById('email').value);
+  let password = String(document.getElementById('password').value);
 
   const config = {
     headers: {
