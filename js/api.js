@@ -21,8 +21,6 @@ let app = new Vue({
 
     addUser:function() {
 
-      console.log(app.email);
-      console.log(app.password);
     
       const config = {
         headers: {
@@ -56,14 +54,10 @@ let app = new Vue({
 
     deleteArticle:function(){
 
-
-      let Article_ID = String(app.id);
     
       let Article_url = "http://206.189.202.188:2523/api/articles/delete/";
     
-      console.log(Article_ID);
-    
-      let delete_url = Article_url.concat(Article_ID);
+      let delete_url = Article_url.concat(app.id);
     
       const config = {
         headers: {
@@ -88,17 +82,13 @@ let app = new Vue({
 
     },
     updateArticle:function(){
-      let Article_ID = app.id;
-      let Article_Title = app.title;
-      let Article_Body = app.body;
     
     
     
       let Article_url = "http://206.189.202.188:2523/api/articles/edit/";
     
-      console.log(Article_ID);
     
-      let edit_url = Article_url.concat(Article_ID);
+      let edit_url = Article_url.concat(app.id);
     
     
     
@@ -114,8 +104,8 @@ let app = new Vue({
         .post(
           `${edit_url}`,
           {
-            title: `${Article_Title}`,
-            body: `${Article_Body}`,
+            title: `${app.title}`,
+            body: `${app.body}`,
           },
           config
         )
@@ -126,11 +116,7 @@ let app = new Vue({
 
     },
     createArticle:function(){
-      let Article_Title = app.title;
-      let Article_Body = app.body;
-      let Article_Category = app.category;
-    
-    
+
       const config = {
         headers: {
           'Content-Type': 'application/json',
@@ -142,9 +128,9 @@ let app = new Vue({
         .post(
           'http://206.189.202.188:2523/api/articles/add',
           {
-            title: `${Article_Title}`,
-            body: `${Article_Body}`,
-            category_id: `${Article_Category}`
+            title: `${app.title}`,
+            body: `${app.body}`,
+            category_id: `${app.category}`
           },
           config
         )
