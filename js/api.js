@@ -1,5 +1,3 @@
-token = "";
-
 let app = new Vue({
   el: '#app',
   data: {
@@ -20,8 +18,6 @@ let app = new Vue({
   methods : {
 
     addUser:function() {
-
-    
       const config = {
         headers: {
           'Content-Type': 'application/json'
@@ -54,9 +50,7 @@ let app = new Vue({
 
     deleteArticle:function(){
 
-    
       let Article_url = "http://206.189.202.188:2523/api/articles/delete/";
-    
       let delete_url = Article_url.concat(app.id);
     
       const config = {
@@ -65,11 +59,7 @@ let app = new Vue({
           Authorization: `Bearer ${app.token}` 
         }
       };
-    
-    
-      console.log(delete_url);
-    
-    
+
       axios
         .delete(
           `${delete_url}`,
@@ -82,17 +72,10 @@ let app = new Vue({
 
     },
     updateArticle:function(){
-    
-    
-    
+
       let Article_url = "http://206.189.202.188:2523/api/articles/edit/";
-    
-    
       let edit_url = Article_url.concat(app.id);
-    
-    
-    
-    
+
       const config = {
         headers: {
           'Content-Type': 'application/json',
