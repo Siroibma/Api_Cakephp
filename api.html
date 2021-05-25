@@ -36,50 +36,49 @@
                </div>
             </div>
             <div class="container">
-               <form @submit.prevent="addUser()" ref = "user_info" >
+               <form >
                   <h2>Enter Username and Password to obtain Token</h2>
                   <label for="email">Email</label><br>
-                  <input type="text" id="email" class="form-control" name = "email"><br>
-                  <label for="password">Password</label><br>
-                  <input type = "password" id="password" class="form-control" name = "password"><br>
-                  <button class="btn btn-info" id="register" >register</button>
+                  <input type="text" class="form-control" v-model = "email"><br>
+                  <label>Password</label><br>
+                  <input type = "password" class="form-control" v-model = "password"><br>
+                  <button class="btn btn-info" @click.prevent ="addUser()">register</button>
                </form>
             </div>
             <div>
-               <form @submit.prevent="createArticle()" ref = "article_info">
+               <form>
                   <h2> To Create An Article You Enter A title and body along with choosing an category number</h2>
                   <strong>Title:</strong>
-                  <input type="text" class="form-control" id = "title" name = "title">
+                  <input type="text" class="form-control" v-model = "title">
                   <strong>Body:</strong>
-                  <textarea class="form-control" id = "body" name = "body"></textarea>
-                  <select name="category" id="category_id">
+                  <textarea class="form-control" v-model = "body"></textarea>
+                  <select name="category" v-model = "category">
                      <option value="5">5</option>
                      <option value="6">6</option>
                      <option value="7">7</option>
                   </select>
-                  <button class="btn btn-info" id="create">create</button>
+                  <button class="btn btn-info" @click.prevent ="createArticle()">create</button>
                </form>
             </div>
-            <strong>Output:</strong>
             <div class="container">
-               <form ref = "delete_art"  @submit.prevent="deleteArticle()">
+               <form >
                   <h2>To Delete an Article you enter the articles respective ID</h2>
-                  <label for="article_ID">Article ID</label><br>
-                  <input type="text" id="article_ID" class="form-control" name = "art_id"><br>
-                  <button class="btn btn-info" id="delete" >delete</button>
+                  <label>Article ID</label><br>
+                  <input type="text" class="form-control" v-model = "id"><br>
+                  <button class="btn btn-info" @click.prevent ="deleteArticle()">delete</button>
                </form>
             </div>
             <div class="container">
                <form ref = "update_art" @submit.prevent = "updateArticle()">
                   <h2>To edit Article You first must enter the article ID</h2>
                   <h2>Enter Title and body of what you want to change</h2>
-                  <label for="AID" >Article ID</label><br>
-                  <input type="text" id="AID" class="form-control" name = "update_AID"><br>
+                  <label>Article ID</label><br>
+                  <input type="text" class="form-control" v-model = "id"><br>
                   <strong>Title:</strong>
-                  <input type="text" class="form-control" id = "update_title" name="update_title">
+                  <input type="text" class="form-control" v-model = "title" >
                   <strong>Body:</strong>
-                  <textarea class="form-control" id = "update_body" name="update_body"></textarea>
-                  <button class="btn btn-info" id="update">Update</button>
+                  <textarea class="form-control" v-model = "body"></textarea>
+                  <button class="btn btn-info" @click.prevent = "updateArticle()">Update</button>
                </form>
             </div>
          </div>

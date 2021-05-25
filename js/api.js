@@ -9,7 +9,11 @@ let app = new Vue({
     output: '',
     token: '',
     email: '',
-    password: ''
+    password: '',
+    title: '',
+    body: '',
+    id: '',
+    category: ''
 
   },
 
@@ -17,12 +21,8 @@ let app = new Vue({
 
     addUser:function() {
 
-      console.log(this.$refs.user_info.email.value);
-      console.log(this.$refs.user_info.password.value);
-    
-    
-      app.email = String(this.$refs.user_info.email.value); 
-      app.password = String(this.$refs.user_info.password.value);
+      console.log(app.email);
+      console.log(app.password);
     
       const config = {
         headers: {
@@ -57,7 +57,7 @@ let app = new Vue({
     deleteArticle:function(){
 
 
-      let Article_ID = String(this.$refs.delete_art.art_id.value);
+      let Article_ID = String(app.id);
     
       let Article_url = "http://206.189.202.188:2523/api/articles/delete/";
     
@@ -88,9 +88,9 @@ let app = new Vue({
 
     },
     updateArticle:function(){
-      let Article_ID = String(this.$refs.update_art.update_AID.value);
-      let Article_Title = String(this.$refs.update_art.update_title.value);
-      let Article_Body = String(this.$refs.update_art.update_body.value);
+      let Article_ID = app.id;
+      let Article_Title = app.title;
+      let Article_Body = app.body;
     
     
     
@@ -126,9 +126,9 @@ let app = new Vue({
 
     },
     createArticle:function(){
-      let Article_Title = String(this.$refs.article_info.title.value);
-      let Article_Body = String(this.$refs.article_info.body.value);
-      let Article_Category = String(this.$refs.article_info.category.value);
+      let Article_Title = app.title;
+      let Article_Body = app.body;
+      let Article_Category = app.category;
     
     
       const config = {
