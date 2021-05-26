@@ -68,7 +68,7 @@ let app = new Vue({
         .then(result => console.log(result))
         .catch(err => console.error(err));
 
-        this.refreshArticle();
+        setTimeout(this.refreshArticle, 2000);
 
     },
     updateArticle:function(){
@@ -95,7 +95,7 @@ let app = new Vue({
         .then(result => console.log(result))
         .catch(err => console.error(err));
 
-        this.refreshArticle();
+        setTimeout(this.refreshArticle, 2000);
 
     },
     createArticle:function(){
@@ -120,7 +120,7 @@ let app = new Vue({
         .then(result => console.log(result))
         .catch(err => console.error(err));
 
-        this.refreshArticle();
+        setTimeout(this.refreshArticle, 2000);
 
     },
     token_get:function(response){
@@ -129,6 +129,7 @@ let app = new Vue({
     
       app.token = json_response.data.token;
       console.log(app.token)
+
     },
 
 
